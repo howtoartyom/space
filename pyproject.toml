@@ -2,7 +2,7 @@
 name = "space"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Artem Getahvili <artik1098@mail.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
