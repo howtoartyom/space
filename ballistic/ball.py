@@ -1,9 +1,23 @@
 """Расчет баллистической траектории с учетом сопротивления воздуха."""
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 def ballistic_trajectory(v0, angle, cd=0.5, rho=1.225, A=0.01, m=1.0, g=9.81, dt=0.01):
+    """
+    Рассчитывает баллистическую траекторию с учетом сопротивления воздуха.
+
+    :param v0: Начальная скорость (м/с).
+    :param angle: Угол запуска (градусы).
+    :param cd: Коэффициент сопротивления.
+    :param rho: Плотность воздуха (кг/м^3).
+    :param A: Площадь поперечного сечения (м^2).
+    :param m: Масса объекта (кг).
+    :param g: Ускорение свободного падения (м/с^2).
+    :param dt: Шаг времени (с).
+    :return: Кортеж с координатами (x, y) траектории.
+    """
     angle_rad = np.radians(angle)
     vx = v0 * np.cos(angle_rad)
     vy = v0 * np.sin(angle_rad)
@@ -29,12 +43,15 @@ def ballistic_trajectory(v0, angle, cd=0.5, rho=1.225, A=0.01, m=1.0, g=9.81, dt
 
     return trajectory_x, trajectory_y
 
-initial_velocity = 30       # м/с
-launch_angle = 45           # градусы
-mass = 0.1                  # кг
+
+initial_velocity = 30  # м/с
+launch_angle = 45  # градусы
+mass = 0.1  # кг
 cross_section_area = 0.005  # м^2
 
-x, y = ballistic_trajectory(initial_velocity, launch_angle, m=mass, A=cross_section_area)
+x, y = ballistic_trajectory(
+    initial_velocity, launch_angle, m=mass, A=cross_section_area
+)
 
 plt.figure(figsize=(8, 6))
 plt.plot(x, y)
